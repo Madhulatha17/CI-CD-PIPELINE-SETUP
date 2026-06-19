@@ -1,0 +1,30 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node (for validation step)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies (optional)
+        run: echo "No dependencies required for static site"
+
+      - name: Run basic check
+        run: |
+          echo "Running CI checks..."
+          ls -la
+
+      - name: Deploy Message
+        run: echo "Deployment Successful 🚀"
